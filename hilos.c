@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+pthread_mutex_t mutex;
+
+void* hilo_funcion_con_mutex(void* arg) {
+    pthread_mutex_lock(&mutex); // Bloquear el mutex
+    printf("Hola desde el hilo %ld\n", (long)arg);
+    pthread_mutex_unlock(&mutex); // Desbloquear el mutex
+    pthread_exit(NULL);
+}
+
 void* hilo_funcion(void* arg) {
     printf("Hola desde el hilo %ld\n", (long)arg);
     pthread_exit(NULL);
@@ -22,4 +31,5 @@ int main() {
 
     return 0;
 }
+
 
