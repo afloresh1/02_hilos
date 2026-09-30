@@ -26,6 +26,7 @@ int main() {
  
     pthread_join(hilo1, NULL);
     pthread_join(hilo2, NULL);
+    pthread_mutex_destroy(&mutex);
 
     printf("Finalizó la ejecución del programa principal\n");
 
